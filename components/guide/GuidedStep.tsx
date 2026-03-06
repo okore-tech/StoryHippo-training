@@ -12,7 +12,7 @@ interface GuidedStepProps {
 
 export default function GuidedStep({ step, accentColor, isCompleted, onComplete }: GuidedStepProps) {
   const [openBranch, setOpenBranch] = useState<string | null>(null)
-  const [checked, setChecked] = useState<Record<string, boolean>>({})
+  const [checked, setChecked] = useState<Record<number, boolean>>({})
   const [showTest, setShowTest] = useState(false)
   const [imgFailed, setImgFailed] = useState(false)
 
