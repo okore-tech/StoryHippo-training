@@ -55,7 +55,7 @@ export default function TopNav() {
         </span>
       </Link>
 
-      {/* Role quick-links — desktop */}
+      {/* Quick-links — desktop */}
       <nav
         style={{
           marginLeft: 'auto',
@@ -66,11 +66,11 @@ export default function TopNav() {
         className="no-print"
       >
         {[
-          { href: '/sales', label: '💼 Sales', color: '#E91E8C' },
+          { href: '/', label: '🏠 Home', color: '#E91E8C' },
+          { href: '/internal', label: '🏢 Internal', color: '#E91E8C' },
+          { href: '/guide', label: '🏫 School Guide', color: '#1565C0' },
           { href: '/teachers', label: '🍎 Teachers', color: '#1565C0' },
           { href: '/learners', label: '👧 Learners', color: '#FF6B35' },
-          { href: '/parents', label: '👨‍👩‍👧 Parents', color: '#2E7D32' },
-          { href: '/sandbox', label: '🧪 Sandbox', color: '#7B2D8B' },
         ].map(({ href, label, color }) => {
           const active = pathname === href
           return (
