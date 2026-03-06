@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import HippoMascot from '@/components/training/HippoMascot'
 import TribalDecor from '@/components/nav/TribalDecor'
@@ -13,8 +13,32 @@ export default function GuidePage() {
   const [completedSteps, setCompletedSteps] = useState<Record<string, boolean>>({})
   const router = useRouter()
 
+  // Restore saved progress when a role is selected
+  useEffect(() => {
+    if (!selectedRole) return
+    try {
+      const saved = localStorage.getItem(`sh_guide_${selectedRole.id}`)
+      if (saved) setCompletedSteps(JSON.parse(saved))
+    } catch { /* ignore */ }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedRole?.id])
+
   function markComplete(stepId: string) {
-    setCompletedSteps((prev) => ({ ...prev, [stepId]: true }))
+    setCompletedSteps((prev) => {
+      const next = { ...prev, [stepId]: true }
+      if (selectedRole) {
+        try { localStorage.setItem(`sh_guide_${selectedRole.id}`, JSON.stringify(next)) } catch { /* ignore */ }
+      }
+      return next
+    })
+  }
+
+  function resetRole() {
+    if (selectedRole) {
+      try { localStorage.removeItem(`sh_guide_${selectedRole.id}`) } catch { /* ignore */ }
+    }
+    setSelectedRole(null)
+    setCompletedSteps({})
   }
 
   if (!selectedRole) {
@@ -42,7 +66,7 @@ export default function GuidePage() {
         <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           {/* Back */}
           <button
-            onClick={() => { setSelectedRole(null); setCompletedSteps({}) }}
+            onClick={resetRole}
             style={{
               display: 'flex',
               alignItems: 'center',

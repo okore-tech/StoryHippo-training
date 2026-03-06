@@ -69,8 +69,8 @@ export default function TopNav() {
           { href: '/', label: '🏠 Home', color: '#E91E8C' },
           { href: '/internal', label: '🏢 Internal', color: '#E91E8C' },
           { href: '/guide', label: '🏫 School Guide', color: '#1565C0' },
+          { href: '/resources', label: '📂 Resources', color: '#7B2D8B' },
           { href: '/teachers', label: '🍎 Teachers', color: '#1565C0' },
-          { href: '/learners', label: '👧 Learners', color: '#FF6B35' },
         ].map(({ href, label, color }) => {
           const active = pathname === href
           return (
