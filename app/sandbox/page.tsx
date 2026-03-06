@@ -2,6 +2,7 @@ import TipBox from '@/components/training/TipBox'
 import PrintButton from '@/components/onepager/PrintButton'
 import HippoMascot from '@/components/training/HippoMascot'
 import TribalDecor from '@/components/nav/TribalDecor'
+import PinGate from '@/components/auth/PinGate'
 import { SANDBOX_PHASES, CONVERSION_SIGNALS } from '@/lib/content'
 
 export const metadata = { title: 'Sandbox Pilot 2026 — StoryHippo Hub' }
@@ -47,6 +48,7 @@ const TIER_BG: Record<string, string> = {
 
 export default function SandboxPage() {
   return (
+    <PinGate role="sandbox">
     <div style={{ background: '#f4f5f9', minHeight: '100vh' }}>
       {/* Hero */}
       <section
@@ -318,5 +320,6 @@ export default function SandboxPage() {
 
       <PrintButton label="Print Sandbox Overview" />
     </div>
+    </PinGate>
   )
 }

@@ -2,12 +2,14 @@ import ModuleSection from '@/components/training/ModuleSection'
 import PrintButton from '@/components/onepager/PrintButton'
 import HippoMascot from '@/components/training/HippoMascot'
 import TribalDecor from '@/components/nav/TribalDecor'
+import PinGate from '@/components/auth/PinGate'
 import { SALES_MODULES, CONVERSION_SIGNALS } from '@/lib/content'
 
 export const metadata = { title: 'Sales Team Training — StoryHippo Hub' }
 
 export default function SalesPage() {
   return (
+    <PinGate role="sales">
     <div style={{ background: '#f4f5f9', minHeight: '100vh' }}>
       {/* Hero */}
       <section
@@ -149,5 +151,6 @@ export default function SalesPage() {
 
       <PrintButton label="Print Sales Reference" />
     </div>
+    </PinGate>
   )
 }
